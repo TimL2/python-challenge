@@ -6,7 +6,7 @@ import csv
 #Set Filepath
 csvpath = Path('Resources/budget_data.csv')
 
-# Initialize csv navigation variables
+# Initialize csv navigation/list variables
 line_num = 0
 profits = []
 dates = []
@@ -38,7 +38,7 @@ with open(csvpath, 'r') as csvfile:
     # Print the header
     #print(f"{header} <---- HEADER")
     
-    # Read each row of data after the header
+    # Read each row of data after the header, make list of Dates, Profit, and Monthly Change
     for row in csvreader:
         #print(row)
         profit = int(row[1])
@@ -57,7 +57,7 @@ with open(csvpath, 'r') as csvfile:
         #Add profit to total_profit
         total_profit += profit
         
-        #Check for max profit and min profit
+        #Check for max profit and min profit change
         if change > max_profit:
             max_profit = change
             max_profit_date = date
@@ -69,7 +69,7 @@ with open(csvpath, 'r') as csvfile:
             in_profit_date = date
         prev_profit = profit
         
-    #Calc average profit
+    #Calc average profit change
     average_profit = (total_change / change_count)
 
 #Display Results
